@@ -12,10 +12,12 @@ const localStrategy = require('passport-local');
 const session = require('express-session');
 const flash = require('connect-flash');
 const { isLoggedIn, isAuthor } = require('./middleware');
+const MongoDBStore = require("connect-mongo")(session);
 
 const dbUrl = process.env.DB_URL
 // 'mongodb://127.0.0.1:27017/employee-schema'
-mongoose.connect(dbUrl,
+// 'mongodb+srv://shreyasasutkar:shreyas@cluster0.ehhsqya.mongodb.net/?retryWrites=true&w=majority'
+mongoose.connect('mongodb+srv://shreyasasutkar:shreyas@cluster0.ehhsqya.mongodb.net/?retryWrites=true&w=majority',
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
